@@ -12,7 +12,7 @@ terraform init
 # Dry run to validate resources to create
 terraform plan
 # expected output:
-# Plan: 2 to add, 0 to change, 0 to destroy.
+# Plan: 3 to add, 0 to change, 0 to destroy.
 # Create resouces
 terraform apply
 # If you want destroy resouces

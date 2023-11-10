@@ -15,9 +15,3 @@ resource "google_project_service" "enable-api" {
   service                    = "container.googleapis.com"
   disable_dependent_services = true
 }
-
-resource "google_service_account" "service_account" {
-  project      = split("/",google_project.my_project.id)[1]
-  account_id   = "automation"
-  display_name = "automation"
-}
