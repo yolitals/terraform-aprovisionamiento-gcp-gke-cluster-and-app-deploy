@@ -6,7 +6,7 @@ Create a GCP project and enable container service
 
 ```sh
 # Move to database directory
-cd [1-terraform-gc-project](1-terraform-gc-project)
+cd 1-terraform-gc-project
 # Get plugins and modules
 terraform init
 # Dry run to validate resources to create
@@ -25,7 +25,7 @@ Create a GKE cluster with public endpoint
 
 ```sh
 # Move to backend directory
-cd [2-terraform-gcp-gke](2-terraform-gcp-gke)
+cd 2-terraform-gcp-gke
 # Get plugins and modules
 terraform init
 # Dry run to validate resources to create
@@ -44,7 +44,7 @@ Deploy all required k8s manifest to deploy voting app
 
 ```sh
 # Move to frontend directory
-cd [3-terraform-gcp-k8s-manifests](3-terraform-gcp-k8s-manifests)
+cd 3-terraform-gcp-k8s-manifests
 # Get plugins and modules
 terraform init
 # Dry run to validate resources to create
