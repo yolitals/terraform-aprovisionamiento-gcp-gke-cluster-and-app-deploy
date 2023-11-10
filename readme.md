@@ -1,5 +1,39 @@
 # GKE Cluster and Voting app
 
+Before start you need configure your workspace
+
+## 0 - Setup
+
+### Configure git
+
+```sh
+# Git config - replace email and username with your info
+git config --global user.email "example@gmail.com"
+git config --global user.name "Example"
+
+# Fork to you github space
+https://github.com/yolitals/terraform-aprovisionamiento-gcp-gke-cluster-and-app-deploy.git
+
+# Clone the repository
+git clone https://github.com/[GITHUB-USER]/terraform-aprovisionamiento-gcp-gke-cluster-and-app-deploy.git
+# Replace [GITHUB-USER] with your github user (Ensure it have been forked).
+
+
+# Move to cloned repository
+cd terraform-aprovisionamiento-gcp-gke-cluster-and-app-deploy
+
+```
+
+### Login into Google Cloud Platform
+
+Acquire new user credentials to use for Application Default Credentials
+
+```sh
+gcloud auth application-default login
+```
+
+Above command will return an URL, follow it to login with your google credentials, once login is completed it return a code, copy it and paste in the terminal where you execute gcloud command.
+
 ## 1 - GCP project
 
 Create a GCP project and enable container service
