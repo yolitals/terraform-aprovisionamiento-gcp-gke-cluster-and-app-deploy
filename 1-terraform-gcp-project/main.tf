@@ -4,10 +4,10 @@ resource "random_integer" "project-id" {
 }
 
 resource "google_project" "my_project" {
-  name            = "sandbox-local"
-  project_id      = "sandbox-local-${random_integer.project-id.result}"
-  org_id          = "24851311546"
-  billing_account = "014413-D964D8-7A33D2"
+  name            = var.sandbox_id
+  project_id      = "${var.sandbox_id}-${random_integer.project-id.result}"
+  org_id          = var.org_id
+  billing_account = var.billing_account
 }
 
 resource "google_project_service" "enable-api" {
@@ -15,4 +15,7 @@ resource "google_project_service" "enable-api" {
   project                    = google_project.my_project.id
   service                    = each.value
   disable_dependent_services = true
+}
+output "project_id" {
+  value = google_project.my_project.id
 }
