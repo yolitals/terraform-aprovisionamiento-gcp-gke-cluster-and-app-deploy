@@ -6,7 +6,10 @@ terraform {
     google-beta = {
       source = "hashicorp/google-beta"
     }
-
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = ">= 1.7.0"
+    }
   }
 }
 
