@@ -1,16 +1,19 @@
-# module "project" {
-#   source          = "../1-terraform-gcp-project"
-#   org_id          = "24851311546"
-#   billing_account = "017347-33616E-AF62C5"
-#   sandbox_id      = var.sandbox_id
-# }
+module "project" {
+  source          = "../1-terraform-gcp-project"
+  org_id          = "24851311546"
+  billing_account = "014413-D964D8-7A33D2"
+  sandbox_id      = var.sandbox_id
+}
 module "cluster" {
+  # source = "git::https://github.com/josema88/terraform-aprovisionamiento-gcp-gke-cluster-and-app-deploy.git//2-terraform-gcp-gke"
   source                = "../2-terraform-gcp-gke"
-  project               = "sandbox-local-264"#split("/", module.project.project_id)[1]
+  project               = split("/", module.project.project_id)[1]
   sandbox_id            = var.sandbox_id
   location              = var.location
   gh_api_config_channel = var.gh_api_config_channel
   gke_node_config       = var.gke_node_config
+  # Explicit dependency just work if the child module doesn't contain terraform block.
+  depends_on = [module.project]
 }
 resource "kubectl_manifest" "test" {
   for_each = {

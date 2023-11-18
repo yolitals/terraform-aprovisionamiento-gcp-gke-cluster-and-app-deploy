@@ -2,9 +2,9 @@ data "google_client_config" "provider" {
 }
 
 data "google_container_cluster" "my_cluster" {
-  project  = "sandbox-local-264"#split("/", module.project.project_id)[1]
-  name     = module.cluster.gke_cluster_id
-  location = "us-central1"
+  project    = split("/", module.project.project_id)[1]
+  name       = module.cluster.gke_cluster_id
+  location   = "us-central1"
   depends_on = [module.cluster]
 }
 
@@ -21,4 +21,5 @@ provider "kubectl" {
     data.google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate,
   )
   token = data.google_client_config.provider.access_token
+  load_config_file       = false
 }
